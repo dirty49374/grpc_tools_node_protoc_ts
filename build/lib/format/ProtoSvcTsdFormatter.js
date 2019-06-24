@@ -81,6 +81,7 @@ var ProtoSvcTsdFormatter;
         return {
             packageName: packageName,
             fileName: fileName,
+            fileNameWithoutExt: fileName.replace('.proto', ''),
             imports: imports,
             services: services,
         };

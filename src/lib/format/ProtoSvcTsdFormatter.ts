@@ -43,6 +43,7 @@ export namespace ProtoSvcTsdFormatter {
     export interface ProtoSvcTsdModel {
         packageName: string;
         fileName: string;
+        fileNameWithoutExt: string;
         imports: string[];
         services: Array<ServiceType>;
     }
@@ -116,6 +117,7 @@ export namespace ProtoSvcTsdFormatter {
         return {
             packageName: packageName,
             fileName: fileName,
+            fileNameWithoutExt: fileName.replace('.proto', ''),
             imports: imports,
             services: services,
         };

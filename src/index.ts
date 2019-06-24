@@ -48,6 +48,13 @@ Utility.withAllStdIn((inputBuff: Buffer) => {
                 svtTsdFile.setContent(TplEngine.render('svc_tsd', fileDescriptorModel));
                 codeGenResponse.addFile(svtTsdFile);
             }
+            if (fileDescriptorModel != null) {
+                let svcFileName = Utility.svcFilePathFromProtoWithoutExt(fileName);
+                let svtTsdFile = new CodeGeneratorResponse.File();
+                svtTsdFile.setName(svcFileName + "_async_cli.ts");
+                svtTsdFile.setContent(TplEngine.render('async_cli_ts', fileDescriptorModel));
+                codeGenResponse.addFile(svtTsdFile);
+            }
         });
 
         process.stdout.write(new Buffer(codeGenResponse.serializeBinary()));
